@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">capteurs</string>
+    <string name="search">1 - capteurs présents</string>
+    <string name="search2">2 - capteurs absents</string>
+</resources>
