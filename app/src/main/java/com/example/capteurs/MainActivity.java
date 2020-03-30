@@ -18,10 +18,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    //    SensorManager sensorManager;
-//    List<Sensor> sensor;
-//    ListView lv;
-//    TextView sen;
     Button btn1, btn2, btn3, btn4, btn5, btn6;
 
 
