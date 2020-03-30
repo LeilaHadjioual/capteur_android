@@ -3,8 +3,11 @@
     package="com.example.capteurs">
 
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera.flash" />
-    <permission android:name="android.permission.FLASHLIGHT"
+
+    <permission
+        android:name="android.permission.FLASHLIGHT"
         android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
         android:protectionLevel="normal" />
 
@@ -15,7 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProximiteActivity"></activity>
+        <activity android:name=".DirectionGpsActivity"></activity>
+        <activity android:name=".DistanceActivity" />
+        <activity android:name=".CoordinatesActivity" />
+        <activity android:name=".ProximiteActivity" />
         <activity android:name=".FlashActivity" />
         <activity android:name=".DirectionActivity" />
         <activity android:name=".AccelerometreActivity" />

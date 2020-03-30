@@ -37,14 +37,14 @@ public class AccelerometreActivity extends AppCompatActivity {
                 y = sensorEvent.values[1];
                 z = sensorEvent.values[2];
 
-                if (acceleration > 2 && acceleration < 4) {
-                    backGround.setBackgroundColor(Color.parseColor("#000000"));
+                if (acceleration > 4) {
+                    backGround.setBackgroundColor(Color.parseColor("#FF0000"));
                 }
                 if (acceleration < 2) {
                     backGround.setBackgroundColor(Color.parseColor("#008000"));
                 }
-                if (acceleration > 4) {
-                    backGround.setBackgroundColor(Color.parseColor("#FF0000"));
+                if (acceleration > 2 && acceleration < 4) {
+                    backGround.setBackgroundColor(Color.parseColor("#000000"));
                 }
 
                 if (x < 0) {
