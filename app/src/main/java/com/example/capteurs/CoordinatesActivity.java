@@ -44,102 +44,73 @@ public class CoordinatesActivity extends AppCompatActivity {
         txtGps = findViewById(R.id.txtGps);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-//        fetchLocation();
+        fetchLocation();
 
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-//                fetchLocation();
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-
-            }
-        };
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-                return;
-            }
-        } else {
-        }
-        locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
 
     }
 
-//    private void fetchLocation() {
-//        if (ContextCompat.checkSelfPermission(CoordinatesActivity.this,
-//                Manifest.permission.ACCESS_COARSE_LOCATION)
-//                != PackageManager.PERMISSION_GRANTED) {
-//
-//            // Permission is not granted
-//            if (ActivityCompat.shouldShowRequestPermissionRationale(CoordinatesActivity.this,
-//                    Manifest.permission.ACCESS_COARSE_LOCATION)) {
-//
-//                new AlertDialog.Builder(CoordinatesActivity.this)
-//                        .setTitle("Permission localisation")
-//                        .setMessage("Vous devez accepter l'utilisation du gps pour utiliser cette fonctionnalité")
-//                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                ActivityCompat.requestPermissions(CoordinatesActivity.this,
-//                                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-//                                        MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-//                            }
-//                        })
-//                        .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                dialog.dismiss();
-//                            }
-//                        })
-//                        .create()
-//                        .show();
-//
-//            } else {
-//                // No explanation needed, we can request the permission.
-//                ActivityCompat.requestPermissions(CoordinatesActivity.this,
-//                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-//                        MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-//            }
-//        } else {
-//            // Permission has already been granted
-//            fusedLocationProviderClient.getLastLocation()
-//                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-//                        @Override
-//                        public void onSuccess(Location location) {
-//                            if (location != null) {
-//                                Double latitude = location.getLatitude();
-//                                Double longitude = location.getLongitude();
-//                                txtGps.setText("latitude : " + latitude + "\nlongitude : " + longitude);
-//                            }
-//
-//                        }
-//                    });
-//        }
-//
-//
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        if (requestCode == MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION) {
-//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                Log.d("GPS", "onRequestPermissionsResult: ok");
-//            } else {
-//                Log.d("GPS", "onRequestPermissionsResult: false");
-//            }
-//        }
-//    }
+    private void fetchLocation() {
+        if (ContextCompat.checkSelfPermission(CoordinatesActivity.this,
+                Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            if (ActivityCompat.shouldShowRequestPermissionRationale(CoordinatesActivity.this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION)) {
+
+                new AlertDialog.Builder(CoordinatesActivity.this)
+                        .setTitle("Permission localisation")
+                        .setMessage("Vous devez accepter l'utilisation du gps pour utiliser cette fonctionnalité")
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ActivityCompat.requestPermissions(CoordinatesActivity.this,
+                                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                                        MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
+                            }
+                        })
+                        .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .create()
+                        .show();
+
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(CoordinatesActivity.this,
+                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
+            }
+        } else {
+            // Permission has already been granted
+            fusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null) {
+                                Double latitude = location.getLatitude();
+                                Double longitude = location.getLongitude();
+                                txtGps.setText("latitude : " + latitude + "\nlongitude : " + longitude);
+                            }
+
+                        }
+                    });
+        }
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d("GPS", "onRequestPermissionsResult: ok");
+            } else {
+                Log.d("GPS", "onRequestPermissionsResult: false");
+            }
+        }
+    }
 }

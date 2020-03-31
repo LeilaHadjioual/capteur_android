@@ -17,7 +17,7 @@ public class AccelerometreActivity extends AppCompatActivity {
 
     private SensorManager sensorManager = null;
     private Sensor accel = null;
-    TextView txt3;
+//    TextView txt3;
 
 
     final SensorEventListener mSensorEventListener = new SensorEventListener() {
@@ -30,7 +30,7 @@ public class AccelerometreActivity extends AppCompatActivity {
         public void onSensorChanged(SensorEvent sensorEvent) {
             float acceleration = (x * x + y * y + z * z) / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
             LinearLayout backGround = findViewById(R.id.accelerometre);
-            txt3 = findViewById(R.id.avant);
+//            txt3 = findViewById(R.id.avant);
 
             if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
                 x = sensorEvent.values[0];
@@ -47,15 +47,15 @@ public class AccelerometreActivity extends AppCompatActivity {
                     backGround.setBackgroundColor(Color.parseColor("#000000"));
                 }
 
-                if (x < 0) {
-                    txt3.setText("droite");
-                } else if (x > 0) {
-                    txt3.setText("gauche");
-                } else if (y < 0) {
-                    txt3.setText("bas");
-                } else if (y > 0) {
-                    txt3.setText("haut");
-                }
+//                if (x < 0) {
+//                    txt3.setText("droite");
+//                } else if (x > 0) {
+//                    txt3.setText("gauche");
+//                } else if (y < 0) {
+//                    txt3.setText("bas");
+//                } else if (y > 0) {
+//                    txt3.setText("haut");
+//                }
             }
         }
     };

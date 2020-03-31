@@ -8,16 +8,16 @@
     android:orientation="horizontal"
     android:id="@+id/accelerometre">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:id="@+id/avant"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="test"-->
+<!--        android:id="@+id/avant"/>-->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:id="@+id/arriere"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="test"-->
+<!--        android:id="@+id/arriere"/>-->
 
 </LinearLayout>
