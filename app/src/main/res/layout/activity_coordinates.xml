@@ -18,5 +18,12 @@
         android:layout_marginTop="50dp"
         android:text="affichage coordonnées gps"
         android:id="@+id/txtGps"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="distance entre 2 points"
+        android:id="@+id/txtDistance"/>
+
 
 </RelativeLayout>

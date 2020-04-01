@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button7:
                 startActivity(new Intent(MainActivity.this, CoordinatesActivity.class));
                 break;
-            case R.id.button8:
-                startActivity(new Intent(MainActivity.this, DistanceActivity.class));
-                break;
+//            case R.id.button8:
+//                startActivity(new Intent(MainActivity.this, DistanceActivity.class));
+//                break;
             case R.id.button9:
                 startActivity(new Intent(MainActivity.this, DirectionGpsActivity.class));
                 break;

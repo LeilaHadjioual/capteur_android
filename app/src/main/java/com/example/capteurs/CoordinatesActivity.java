@@ -30,7 +30,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class CoordinatesActivity extends AppCompatActivity {
 
     private TextView txtGps;
-    private LocationManager locationManager;
+    private TextView txtDistance;
+    LocationManager locationManager;
+//    private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;
 
 
     @Override
@@ -39,6 +41,7 @@ public class CoordinatesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_coordinates);
 
         txtGps = findViewById(R.id.txtGps);
+        txtDistance = findViewById(R.id.txtDistance);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -46,9 +49,15 @@ public class CoordinatesActivity extends AppCompatActivity {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 15000, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
-                    Double longitude = location.getLongitude();
-                    Double latitude = location.getLatitude();
+                    double longitude = location.getLongitude();
+                    double latitude = location.getLatitude();
                     txtGps.setText("latitude : " + latitude + "\n" + "longitude : " + longitude);
+                    float[] result = new float[1];
+
+                    Location.distanceBetween(location.getLatitude(), location.getLongitude(), 45.023656, 5.6026598, result);
+
+                    txtDistance.setText("distance entre localisation actuelle et autre " + result[0]/1000);
+
                 }
 
                 @Override
@@ -67,18 +76,19 @@ public class CoordinatesActivity extends AppCompatActivity {
                 }
             });
         } else {
-            ActivityCompat.requestPermissions(CoordinatesActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+            ActivityCompat.requestPermissions(CoordinatesActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 10);
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
-            case 0: {
+            case 10: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     startActivity(getIntent());
 
                 } else {
+
                 }
                 return;
             }
@@ -86,4 +96,5 @@ public class CoordinatesActivity extends AppCompatActivity {
         }
 
     }
+
 }
