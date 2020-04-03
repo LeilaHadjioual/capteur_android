@@ -56,7 +56,7 @@ public class CoordinatesActivity extends AppCompatActivity {
 
                     Location.distanceBetween(location.getLatitude(), location.getLongitude(), 45.023656, 5.6026598, result);
 
-                    txtDistance.setText("distance entre localisation actuelle et autre " + result[0]/1000);
+                    txtDistance.setText("distance, j'arrête j'y comprend rien et rien ne marche! " + result[0]/1000);
 
                 }
 
